@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "cleanUrls": false,
+  "functions": {"api/cron/refresh.js": {"maxDuration": 60}},
+  "crons": [{"path": "/api/cron/refresh", "schedule": "30 2 * * *"}],
+  "headers": [{"source": "/api/(.*)", "headers": [{"key": "X-Content-Type-Options", "value": "nosniff"}]}]
+}

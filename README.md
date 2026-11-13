@@ -1,53 +1,64 @@
 # AI Job Tracker
 
-Private career workspace for AI/ML opportunities in Ahmedabad, Gujarat and India-wide remote or hybrid roles.
+A browser-local career workspace for AI/ML jobs around Ahmedabad and Gujarat, plus India-wide remote and hybrid roles.
 
 ## Features
 
-- Search and filter verified and unverified listings by skills, location, work mode, role and experience.
-- Save jobs, record application statuses, private notes and follow-up dates.
-- Add job descriptions for closer resume tailoring.
-- Download a tailored, text-based Oxford-style PDF directly from each job card.
-- Preview and edit drafts; export PDF, text or Overleaf LaTeX.
-- Export and import a tracker backup.
+- Search and filter opportunities by skills, location, work mode and experience.
+- Save jobs and track application status, private notes and follow-up dates.
+- Download an Oxford-style, text-based tailored resume PDF from each job card.
+- Edit a master resume and export PDF, plain text or Overleaf LaTeX.
+- Refresh a persistent shared job feed with Google Search-grounded Gemini discovery and independent source checks.
+- Merge a Gemini Spark JSON report without replacing saved jobs or application states.
+- Show last successful refresh, stale data, verification dates and unavailable configuration honestly.
 
-## Run locally
+## Vercel deployment
 
-Requires Python 3. No build or package installation is needed.
+Import this repository with Root Directory set to the repository root and Framework set to **Other**. The included `vercel.json` sets the build to `npm run build`, output to `dist`, Node functions under `api`, and a daily cron at **8:00 AM IST** (`30 2 * * *` UTC).
+
+Follow [Vercel setup](docs/VERCEL_SETUP.md) to connect private Blob storage and server-only Google API credentials. Vercel Hobby scheduling may run up to 59 minutes late. The website and resume downloads work without API credentials; fresh discovery stays explicitly unconfigured until setup is complete.
+
+Gemini Search API and the Gemini Spark app are distinct services. See [Gemini Spark task setup](docs/GEMINI_SPARK_TASK.md) for the prepared Google task and import format. Deploying the code does not authenticate Spark or prove that a Google schedule is active.
+
+## Local development and validation
+
+Requires Node.js 22.x.
 
 ```sh
-python3 -m http.server 8000 --directory dist
+npm ci
+npm test
+npm run build
+npm run dev
 ```
 
-Open http://localhost:8000. Use an HTTP server rather than opening HTML files directly, because resume fonts and seed data are fetched locally.
+Open http://localhost:3000. Copy `.env.example` to `.env.local` only for local server testing, then use `node --env-file=.env.local scripts/dev.mjs`. Never commit real credentials.
+
+For the static-only website, `python3 -m http.server 8000 --directory dist` also works, but server feed functions are unavailable. GitHub Pages can serve the static website using the included workflow; Vercel supplies the API and cron features.
 
 ## Source layout
 
-- `dist/index.html`: job tracker UI and browser-local state.
-- `dist/resume.html`: resume comparison and editing UI.
-- `dist/resume-core.js`: supplied master resume, matching, PDF creation and downloads.
-- `dist/jobs-seed.json`: dated seed listing data.
-- `dist/resumes/`: prepared PDFs for seed jobs.
-- `dist/fonts/`: embedded serif fonts and license.
-- `dist/vendor/`: bundled pdf-lib and fontkit libraries.
-- `.openai/hosting.json`: existing Sites deployment configuration.
+| Path | Purpose |
+| --- | --- |
+| `dist/index.html` | Tracker UI, browser-local notes, statuses and saved jobs |
+| `dist/resume.html` | Resume comparison and editing |
+| `dist/resume-core.js` | Supplied master facts, local matching and PDF generation |
+| `dist/jobs-feed.js` | Feed sync and Spark report imports |
+| `dist/jobs-seed.json` | Dated seed opportunities |
+| `dist/resumes/` | Prepared seed-job resumes |
+| `api/jobs.js` | Read-only shared feed endpoint |
+| `api/cron/refresh.js` | Secret-protected daily search endpoint |
+| `lib/` | Discovery, verification, persistent storage and safe source fetching |
+| `test/` | Verification, authorization, recovery and merge checks |
+| `docs/` | Vercel and Gemini setup instructions |
 
 ## Data and limitations
 
-This repository includes Manthan Mittal’s supplied resume facts, email address, Indian phone number and generated resume PDFs. Keep the repository private if those details should not be public.
+This repository includes Manthan Mittal's supplied resume, email, phone number and prepared PDFs. They are visible on any public deployment. Sites' original sign-in gate is not part of the HTML and does not apply to Vercel or GitHub Pages.
 
-Tracking and edited master resumes are stored in the current browser’s localStorage. They do not sync across devices. Export a backup before clearing browser data. Seed listings are a dated snapshot, not a live feed; availability needs rechecking at the source. No job applications are submitted and no employers are contacted.
+Personal tracking and edited master resumes remain in localStorage on the current browser. Export backups before clearing data or moving devices. The shared backend stores only public job information and search evidence. No resume or candidate details are sent to Google by the discovery function, no employers are contacted and no applications are submitted.
 
-Resume tailoring uses local keyword matching and evidence selection, not an AI service. It does not invent experience or guarantee an ATS percentage or hiring result. Review every resume before applying.
+Discovery is best effort, not exhaustive. Newly discovered listings are not necessarily newly posted. Unconfirmed details stay unverified; missing dates are not invented. Site fetches can fail or be blocked. Resume tailoring selects and reorders existing evidence rather than using a generative model, and does not promise an ATS percentage or hiring outcome.
 
-## Deployment
+The static site remains usable if Google discovery or storage fails. A failed refresh retains the previous shared feed, with its actual timestamp and error state.
 
-Serve `dist/` from a static host. The existing private deployment uses ChatGPT Sites; its access controls are supplied by Sites, not by the HTML files. A different public static host will not inherit that privacy gate.
-
-Third-party assets retain their respective licenses. Repository licensing for the application source has not been specified.
-
-## GitHub Pages
-
-The included `.github/workflows/pages.yml` publishes `dist/` on pushes to `main`, after Pages is enabled with **GitHub Actions** as its source under repository Settings > Pages. Paths are relative so the project-site URL works. Pages availability for a private repository depends on the GitHub plan.
-
-This exported GitHub Pages version labels itself as a browser-local tracker, not a private website. The original master resume and PDF assets are downloadable by anyone who can visit the hosted site. The personal master resume is in `dist/resume-core.js`; remove personal defaults and prepared PDFs before any public deployment if they should stay private.
+Fonts and bundled pdf-lib/fontkit assets retain their respective licenses. Application source licensing has not been specified.

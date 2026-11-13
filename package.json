@@ -1,0 +1,13 @@
+{
+  "name": "ai-job-tracker",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {"node": "22.x"},
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test test/*.test.mjs",
+    "dev": "node scripts/dev.mjs"
+  },
+  "dependencies": {"@vercel/blob": "2.9.0"}
+}
