@@ -1,0 +1,123 @@
+[
+  {
+    "id": "blue",
+    "title": "AI/ML Development Intern",
+    "company": "Blueinfy",
+    "location": "Ahmedabad, Gujarat",
+    "mode": "Not stated",
+    "family": "AI/ML",
+    "experience": "Internship; years not stated",
+    "level": "early",
+    "skills": [
+      "Python",
+      "LLMs",
+      "APIs",
+      "Git"
+    ],
+    "url": "https://blueinfy.com/careers.html",
+    "note": "Cybersecurity focus. Compensation and work mode not stated.",
+    "verified": true,
+    "checked": "2026-11-13"
+  },
+  {
+    "id": "avyam",
+    "title": "AI/ML Intern",
+    "company": "AVYAM LABS",
+    "location": "India · Ahmedabad-based employer",
+    "mode": "Remote",
+    "family": "AI/ML",
+    "experience": "Conflicting: header says 1 year; description welcomes fresh graduates",
+    "level": "early",
+    "skills": [
+      "Python",
+      "Machine Learning",
+      "Data Analysis",
+      "Scikit-learn"
+    ],
+    "url": "https://wellfound.com/jobs/4829680-ai-ml-intern",
+    "posted": "4 weeks ago (source, checked 13 Nov 2026)",
+    "note": "Unpaid, 6-month internship. Experience requirement is inconsistent; confirm eligibility.",
+    "verified": true,
+    "checked": "2026-11-13"
+  },
+  {
+    "id": "hvdex0",
+    "title": "AI / ML Intern",
+    "company": "HVDEX Solutions",
+    "location": "Ahmedabad, Gujarat",
+    "mode": "On-site",
+    "family": "AI/ML",
+    "experience": "Internship; years not stated",
+    "level": "early",
+    "skills": [
+      "Python",
+      "Pandas",
+      "Scikit-learn",
+      "PyTorch / TensorFlow"
+    ],
+    "url": "https://hvdex.com/careers/",
+    "note": "3 or 6 months. Source offers candidate-paid and free tracks; no stipend confirmed. Check terms carefully.",
+    "verified": true,
+    "checked": "2026-11-13"
+  },
+  {
+    "id": "hvdex1",
+    "title": "Data Science Intern",
+    "company": "HVDEX Solutions",
+    "location": "Ahmedabad, Gujarat",
+    "mode": "On-site",
+    "family": "Data Science",
+    "experience": "Internship; years not stated",
+    "level": "early",
+    "skills": [
+      "Python / R",
+      "SQL",
+      "Statistics",
+      "Matplotlib"
+    ],
+    "url": "https://hvdex.com/careers/",
+    "note": "3 or 6 months. Source offers candidate-paid and free tracks; no stipend confirmed. Check terms carefully.",
+    "verified": true,
+    "checked": "2026-11-13"
+  },
+  {
+    "id": "hvdex2",
+    "title": "Data Analysis Intern",
+    "company": "HVDEX Solutions",
+    "location": "Ahmedabad, Gujarat",
+    "mode": "On-site",
+    "family": "Data Analyst",
+    "experience": "Internship; years not stated",
+    "level": "early",
+    "skills": [
+      "Excel",
+      "SQL",
+      "Power BI / Tableau",
+      "Data Cleaning"
+    ],
+    "url": "https://hvdex.com/careers/",
+    "note": "3 or 6 months. Source offers candidate-paid and free tracks; no stipend confirmed. Check terms carefully.",
+    "verified": true,
+    "checked": "2026-11-13"
+  },
+  {
+    "id": "brainyllm",
+    "title": "LLM Engineer",
+    "company": "Brainy Neurals",
+    "location": "Ahmedabad, Gujarat",
+    "mode": "On-site",
+    "family": "Generative AI",
+    "experience": "2+ years",
+    "level": "experienced",
+    "skills": [
+      "LangChain",
+      "Vector DBs",
+      "Python",
+      "FastAPI"
+    ],
+    "url": "https://brainyneurals.com/career/",
+    "note": "Experienced role; included as a broader match, not fresher priority.",
+    "verified": true,
+    "checked": "2026-11-13"
+  }
+]
